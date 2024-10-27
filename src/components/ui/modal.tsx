@@ -35,7 +35,7 @@ export const AgreementModal = ({
                   className="w-4 h-4"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  fill="src/components/Screenshot 2024-10-25 024926.png"
                   viewBox="0 0 14 14"
                 >
                   <path

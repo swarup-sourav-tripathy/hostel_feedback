@@ -4,7 +4,6 @@ import "./globals.css";
 import Home from "./page";
 
 
-
 export const metadata: Metadata = {
   title: "Hostel Feedback",
   description: "From VSSUT Editor",
