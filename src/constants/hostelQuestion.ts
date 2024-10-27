@@ -1,7 +1,7 @@
 export const hostelQuestions = [
     "Hygiene of mess kitchen and dining area",
     "Quality and taste of food served",
-    "Quantity of food served as prescribed in menu",
+    "Quantity of food served as per contract",
     "Is food served as per scheduled time?",
     "Is food served as per menu?",
     "Are mess workers using gloves, head covers, masks, gowns etc.?",

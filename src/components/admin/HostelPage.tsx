@@ -1,8 +1,9 @@
 "use client";
 import { StarIcon } from "lucide-react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { baseURL } from "@/constants";
+
 // import { Calendar } from "@/components/ui/calendar"
 import { Calendar } from "@nextui-org/calendar";
 import { useMemo } from "react";
@@ -11,6 +12,7 @@ import { today, getLocalTimeZone } from "@internationalized/date";
 import { parseDate } from "@internationalized/date";
 import type { DateValue } from "@react-types/calendar";
 import { CalendarDate } from "@nextui-org/react";
+
 
 interface HostelReview {
   _id: string;
@@ -37,9 +39,8 @@ function RatingBar({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) => (
         <StarIcon
           key={star}
-          className={`h-4 w-4 ${
-            star <= rating ? "text-yellow-400" : "text-gray-300"
-          }`}
+          className={`h-4 w-4 ${star <= rating ? "text-yellow-400" : "text-gray-300"
+            }`}
           fill={star <= rating ? "currentColor" : "none"}
         />
       ))}
@@ -53,6 +54,7 @@ function RatingBar({ rating }: { rating: number }) {
 export default function HostelLanding() {
   const [hostelData, setHostelData] = useState<HostelReview[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
  
   const [cachedData, setCachedData] = useState<Record<string, HostelReview[]>>(
     {}
@@ -85,6 +87,7 @@ export default function HostelLanding() {
         console.log(indianDate);
         
 
+
         if (cachedData[indianDate]) {
           setHostelData(cachedData[indianDate]);
           setLoading(false);
@@ -111,6 +114,7 @@ export default function HostelLanding() {
   
   
   useEffect(() => {
+
     fetchData(focusedDate);
   }, []);
 
@@ -131,6 +135,7 @@ export default function HostelLanding() {
     [defaultDate]
   );
 
+
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex justify-center items-center flex-col">
@@ -138,7 +143,9 @@ export default function HostelLanding() {
           Top Rated Hostels
         </h1>
         {calendar}
+
         <br/>
+
         {loading ? (
           <div className="text-center text-lg font-semibold text-gray-800 mt-8">
             Loading data...
@@ -163,6 +170,7 @@ export default function HostelLanding() {
                     {hostel.totalReviews}
                   </p>
                   <div className="space-y-4 mt-auto">
+
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-gray-700">
                         Hygiene:
@@ -224,6 +232,7 @@ export default function HostelLanding() {
                       <RatingBar rating={hostel.avgWaitingTime} />
                     </div>
                   </div>
+
                 </div>
               ))
             ) : (

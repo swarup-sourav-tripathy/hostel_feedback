@@ -23,10 +23,12 @@ function Calendar({
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
+
         caption_label:cn(
           buttonVariants({ variant: "secondary" }), // Apply secondary button styling
           "text-sm font-medium"
         ),
+
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "secondary" }),
@@ -52,8 +54,10 @@ function Calendar({
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
         day_selected:
+
           "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         day_today: "bg-default text-default-foreground",
+
         day_outside:
           "day-outside text-muted-foreground opacity-50  aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         day_disabled: "text-muted-foreground opacity-50",
@@ -64,8 +68,8 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
-        IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
+        IconLeft: ({  }) => <ChevronLeftIcon className="h-4 w-4" />,
+        IconRight: ({  }) => <ChevronRightIcon className="h-4 w-4" />,
       }}
       {...props}
     />

@@ -14,7 +14,7 @@ import { Textarea } from './ui/textarea'
 import { AgreementModal } from './ui/modal'
 
 export default function Form() {
-    const [ratings, setRatings] = useState(questions.map(() => 1))
+    const [ratings, setRatings] = useState(questions.map(() => 0))
     const [selectedHostel, setSelectedHostel] = useState("")
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
@@ -38,7 +38,9 @@ export default function Form() {
         }
         setLoading(true)
         try {
-            const response = await axios.post(`${baseURL}/api/feedback/add`, {
+
+            const res = await axios.post(`${baseURL}/api/feedback/add`, {
+
                 name: selectedHostel,
                 email: email,
                 hygiene: ratings[0],
@@ -53,6 +55,7 @@ export default function Form() {
                 waitingTime: ratings[9],
                 remark: remark
             })
+            console.log(res.headers)
             alert("Form submitted successfully")
             console.log(response.data.message);
         } catch (error) {
@@ -126,7 +129,7 @@ export default function Form() {
                 <div className="space-y-2">
                     <div className="flex items-start  flex-col space-x-4">
                         <Label className="text-base font-medium">
-                            11. Remarks
+                            11. Remarks (in 10 words)
                         </Label>
                         <div className="slider-wrapper">
                             <Textarea placeholder="Any remarks regarding clealiness of mess" id="message" value={remark} onChange={(e) => setRemark(e.target.value)} />
@@ -142,10 +145,10 @@ export default function Form() {
                     {!loading ? "Submit Feedback" : "Submitting..."}
                 </Button>
                 <Button className="w-full py-3" onClick={ToggleAgreement}>
-                    Show Agreement
+                    Show Contract
                 </Button>
             </CardFooter>
-            <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement}/>
+            <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement} />
         </Card>
 
     )
