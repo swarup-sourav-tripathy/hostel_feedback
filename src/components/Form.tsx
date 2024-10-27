@@ -55,9 +55,9 @@ export default function Form() {
                 waitingTime: ratings[9],
                 remark: remark
             })
-            console.log(res.headers)
+            // console.log(res.headers)
             alert("Form submitted successfully")
-            console.log(response.data.message);
+            // console.log(res.data.message);
         } catch (error) {
             alert("Form not submitted")
            
